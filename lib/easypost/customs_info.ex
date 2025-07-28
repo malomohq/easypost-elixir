@@ -4,6 +4,6 @@ defmodule EasyPost.CustomsInfo do
   """
   @spec create(map) :: EasyPost.Operation.t()
   def create(params) do
-    %EasyPost.Operation{ method: :post, params: params, path: "/customs_infos" }
+    %EasyPost.Operation{method: :post, params: params, path: "/customs_infos"}
   end
 end

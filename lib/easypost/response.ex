@@ -1,5 +1,5 @@
 defmodule EasyPost.Response do
-  alias EasyPost.{ Helpers }
+  alias EasyPost.{Helpers}
 
   @type t ::
           %__MODULE__{
@@ -12,7 +12,7 @@ defmodule EasyPost.Response do
 
   @spec new(EasyPost.HTTP.response_t(), EasyPost.Config.t()) :: t
   def new(response, config) do
-    body =  Helpers.JSON.decode(Map.get(response, :body), config)
+    body = Helpers.JSON.decode(Map.get(response, :body), config)
 
     headers = Map.get(response, :headers)
 

@@ -4,7 +4,7 @@ defmodule EasyPost.ScanForm do
   """
   @spec create(map) :: EasyPost.Operation.t()
   def create(params) do
-    %EasyPost.Operation{ method: :post, params: params, path: "/scan_forms" }
+    %EasyPost.Operation{method: :post, params: params, path: "/scan_forms"}
   end
 
   @doc """
@@ -12,7 +12,7 @@ defmodule EasyPost.ScanForm do
   """
   @spec get(String.t()) :: EasyPost.Operation.t()
   def get(id) do
-    %EasyPost.Operation{ method: :get, path: "/scan_forms/#{id}" }
+    %EasyPost.Operation{method: :get, path: "/scan_forms/#{id}"}
   end
 
   @doc """
@@ -20,6 +20,6 @@ defmodule EasyPost.ScanForm do
   """
   @spec list(map) :: EasyPost.Operation.t()
   def list(params \\ %{}) do
-    %EasyPost.Operation{ method: :get, params: params, path: "/scan_forms" }
+    %EasyPost.Operation{method: :get, params: params, path: "/scan_forms"}
   end
 end

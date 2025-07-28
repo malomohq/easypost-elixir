@@ -16,7 +16,7 @@ defmodule EasyPost.Report do
   """
   @spec get(String.t(), String.t()) :: EasyPost.Operation.t()
   def get(type, id) do
-    %EasyPost.Operation{ method: :get, path: "/reports/#{type}/#{id}" }
+    %EasyPost.Operation{method: :get, path: "/reports/#{type}/#{id}"}
   end
 
   @doc """

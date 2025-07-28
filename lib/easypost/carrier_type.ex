@@ -4,6 +4,6 @@ defmodule EasyPost.CarrierType do
   """
   @spec list :: EasyPost.Operation.t()
   def list do
-    %EasyPost.Operation{ method: :get, path: "/carrier_types" }
+    %EasyPost.Operation{method: :get, path: "/carrier_types"}
   end
 end

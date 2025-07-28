@@ -16,7 +16,7 @@ defmodule EasyPost.CarrierAccount do
   """
   @spec delete(String.t()) :: EasyPost.Operation.t()
   def delete(id) do
-    %EasyPost.Operation{ method: :delete, path: "/carrier_accounts/#{id}" }
+    %EasyPost.Operation{method: :delete, path: "/carrier_accounts/#{id}"}
   end
 
   @doc """
@@ -24,7 +24,7 @@ defmodule EasyPost.CarrierAccount do
   """
   @spec get(String.t()) :: EasyPost.Operation.t()
   def get(id) do
-    %EasyPost.Operation{ method: :get, path: "/carrier_accounts/#{id}" }
+    %EasyPost.Operation{method: :get, path: "/carrier_accounts/#{id}"}
   end
 
   @doc """
@@ -32,7 +32,7 @@ defmodule EasyPost.CarrierAccount do
   """
   @spec list :: EasyPost.Operation.t()
   def list do
-    %EasyPost.Operation{ method: :get, path: "/carrier_accounts" }
+    %EasyPost.Operation{method: :get, path: "/carrier_accounts"}
   end
 
   @doc """

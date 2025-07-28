@@ -4,7 +4,7 @@ defmodule EasyPost.Parcel do
   """
   @spec create(map) :: EasyPost.Operation.t()
   def create(params) do
-    %EasyPost.Operation{ method: :post, params: params, path: "/parcels" }
+    %EasyPost.Operation{method: :post, params: params, path: "/parcels"}
   end
 
   @doc """
@@ -12,6 +12,6 @@ defmodule EasyPost.Parcel do
   """
   @spec get(String.t()) :: EasyPost.Operation.t()
   def get(id) do
-    %EasyPost.Operation{ method: :get, path: "/parcels/#{id}" }
+    %EasyPost.Operation{method: :get, path: "/parcels/#{id}"}
   end
 end

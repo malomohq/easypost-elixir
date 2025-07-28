@@ -28,7 +28,7 @@ defmodule EasyPost.Shipment do
   """
   @spec create(map) :: EasyPost.Operation.t()
   def create(params) do
-    %EasyPost.Operation{ method: :post, params: params, path: "/shipments" }
+    %EasyPost.Operation{method: :post, params: params, path: "/shipments"}
   end
 
   @doc """
@@ -36,7 +36,7 @@ defmodule EasyPost.Shipment do
   """
   @spec get(String.t()) :: EasyPost.Operation.t()
   def get(id) do
-    %EasyPost.Operation{ method: :get, path: "/shipments/#{id}" }
+    %EasyPost.Operation{method: :get, path: "/shipments/#{id}"}
   end
 
   @doc """
@@ -56,7 +56,7 @@ defmodule EasyPost.Shipment do
   """
   @spec list(map) :: EasyPost.Operation.t()
   def list(params \\ %{}) do
-    %EasyPost.Operation{ method: :get, params: params, path: "/shipments" }
+    %EasyPost.Operation{method: :get, params: params, path: "/shipments"}
   end
 
   @doc """
@@ -64,7 +64,7 @@ defmodule EasyPost.Shipment do
   """
   @spec rates(String.t()) :: EasyPost.Operation.t()
   def rates(id) do
-    %EasyPost.Operation{ method: :get, path: "/shipments/#{id}/rates" }
+    %EasyPost.Operation{method: :get, path: "/shipments/#{id}/rates"}
   end
 
   @doc """
@@ -72,6 +72,6 @@ defmodule EasyPost.Shipment do
   """
   @spec refund(String.t()) :: EasyPost.Operation.t()
   def refund(id) do
-    %EasyPost.Operation{ method: :post, path: "/shipments/#{id}/refund" }
+    %EasyPost.Operation{method: :post, path: "/shipments/#{id}/refund"}
   end
 end

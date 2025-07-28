@@ -12,5 +12,5 @@ defmodule EasyPost.HTTP do
               headers :: EasyPost.http_headers_t(),
               body :: binary,
               opts :: any
-            ) :: { :ok, response_t } | { :error, any }
+            ) :: {:ok, response_t} | {:error, any}
 end

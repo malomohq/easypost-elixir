@@ -4,7 +4,7 @@ defmodule EasyPost.Address do
   """
   @spec create(map) :: EasyPost.Operation.t()
   def create(params) do
-    %EasyPost.Operation{ method: :post, params: params, path: "/addresses" }
+    %EasyPost.Operation{method: :post, params: params, path: "/addresses"}
   end
 
   @doc """
@@ -12,6 +12,6 @@ defmodule EasyPost.Address do
   """
   @spec get(String.t()) :: EasyPost.Operation.t()
   def get(id) do
-    %EasyPost.Operation{ method: :get, path: "/addresses/#{id}" }
+    %EasyPost.Operation{method: :get, path: "/addresses/#{id}"}
   end
 end

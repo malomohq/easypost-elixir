@@ -16,7 +16,7 @@ defmodule EasyPost.Batch do
   """
   @spec create(map) :: EasyPost.Operation.t()
   def create(params) do
-    %EasyPost.Operation{ method: :post, params: params, path: "/batches" }
+    %EasyPost.Operation{method: :post, params: params, path: "/batches"}
   end
 
   @doc """
@@ -48,6 +48,6 @@ defmodule EasyPost.Batch do
   """
   @spec scan_form(String.t()) :: EasyPost.Operation.t()
   def scan_form(id) do
-    %EasyPost.Operation{ method: :post, path: "/batches/#{id}/scan_form" }
+    %EasyPost.Operation{method: :post, path: "/batches/#{id}/scan_form"}
   end
 end

@@ -4,6 +4,6 @@ defmodule EasyPost.APIKey do
   """
   @spec get(String.t()) :: EasyPost.Operation.t()
   def get(id) do
-    %EasyPost.Operation{ method: :get, path: "/api_keys/#{id}" }
+    %EasyPost.Operation{method: :get, path: "/api_keys/#{id}"}
   end
 end

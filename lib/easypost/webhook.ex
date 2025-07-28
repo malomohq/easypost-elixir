@@ -4,7 +4,7 @@ defmodule EasyPost.Webhook do
   """
   @spec create(map) :: EasyPost.Operation.t()
   def create(params) do
-    %EasyPost.Operation{ method: :post, params: params, path: "/webhooks" }
+    %EasyPost.Operation{method: :post, params: params, path: "/webhooks"}
   end
 
   @doc """
@@ -12,7 +12,7 @@ defmodule EasyPost.Webhook do
   """
   @spec delete(String.t()) :: EasyPost.Operation.t()
   def delete(id) do
-    %EasyPost.Operation{ method: :delete, path: "/webhooks/#{id}" }
+    %EasyPost.Operation{method: :delete, path: "/webhooks/#{id}"}
   end
 
   @doc """
@@ -20,7 +20,7 @@ defmodule EasyPost.Webhook do
   """
   @spec get(String.t()) :: EasyPost.Operation.t()
   def get(id) do
-    %EasyPost.Operation{ method: :get, path: "/webhooks/#{id}" }
+    %EasyPost.Operation{method: :get, path: "/webhooks/#{id}"}
   end
 
   @doc """
@@ -28,7 +28,7 @@ defmodule EasyPost.Webhook do
   """
   @spec list :: EasyPost.Operation.t()
   def list do
-    %EasyPost.Operation{ method: :get, path: "/webhooks" }
+    %EasyPost.Operation{method: :get, path: "/webhooks"}
   end
 
   @doc """
@@ -36,6 +36,6 @@ defmodule EasyPost.Webhook do
   """
   @spec update(String.t(), map) :: EasyPost.Operation.t()
   def update(id, params) do
-    %EasyPost.Operation{ method: :put, params: params, path: "/webhooks/#{id}" }
+    %EasyPost.Operation{method: :put, params: params, path: "/webhooks/#{id}"}
   end
 end

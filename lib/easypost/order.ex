@@ -16,7 +16,7 @@ defmodule EasyPost.Order do
   """
   @spec create(map) :: EasyPost.Operation.t()
   def create(params) do
-    %EasyPost.Operation{ method: :post, params: params, path: "/orders" }
+    %EasyPost.Operation{method: :post, params: params, path: "/orders"}
   end
 
   @doc """
@@ -24,6 +24,6 @@ defmodule EasyPost.Order do
   """
   @spec get(String.t()) :: EasyPost.Operation.t()
   def get(id) do
-    %EasyPost.Operation{ method: :get, path: "/orders/#{id}" }
+    %EasyPost.Operation{method: :get, path: "/orders/#{id}"}
   end
 end

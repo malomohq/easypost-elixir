@@ -1,5 +1,5 @@
 defmodule EasyPost.Request do
-  alias EasyPost.{ Helpers, Response }
+  alias EasyPost.{Helpers, Response}
 
   @type t ::
           %__MODULE__{
@@ -26,8 +26,8 @@ defmodule EasyPost.Request do
     api_key = Base.encode64(api_key)
 
     headers = []
-    headers = headers ++ [{ "authorization", "Basic #{api_key}" }]
-    headers = headers ++ [{ "content-type", "application/json" }]
+    headers = headers ++ [{"authorization", "Basic #{api_key}"}]
+    headers = headers ++ [{"content-type", "application/json"}]
 
     method = operation.method
 
@@ -48,7 +48,14 @@ defmodule EasyPost.Request do
   defp dispatch(request, config) do
     http_client = config.http_client
 
-    result = http_client.request(request.method, request.url, request.headers, request.body, config.http_client_opts)
+    result =
+      http_client.request(
+        request.method,
+        request.url,
+        request.headers,
+        request.body,
+        config.http_client_opts
+      )
 
     request = Map.put(request, :attempt, request.attempt + 1)
     request = Map.put(request, :result, result)
@@ -61,10 +68,12 @@ defmodule EasyPost.Request do
 
     if config.retry && max_attempts > request.attempt do
       case request.result do
-        { :ok, %{ status_code: status_code } } when status_code >= 500 ->
+        {:ok, %{status_code: status_code}} when status_code >= 500 ->
           dispatch(request, config)
-        { :error, _reason } ->
+
+        {:error, _reason} ->
           dispatch(request, config)
+
         _otherwise ->
           request
       end
@@ -75,10 +84,12 @@ defmodule EasyPost.Request do
 
   defp finish(request, config) do
     case request.result do
-      { :ok, %{ status_code: status_code } = response } when status_code >= 400 ->
-        { :error, Response.new(response, config) }
-      { :ok, %{ status_code: status_code } = response } when status_code >= 200 ->
-        { :ok, Response.new(response, config) }
+      {:ok, %{status_code: status_code} = response} when status_code >= 400 ->
+        {:error, Response.new(response, config)}
+
+      {:ok, %{status_code: status_code} = response} when status_code >= 200 ->
+        {:ok, Response.new(response, config)}
+
       otherwise ->
         otherwise
     end
