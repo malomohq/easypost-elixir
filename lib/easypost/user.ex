@@ -8,6 +8,14 @@ defmodule EasyPost.User do
   end
 
   @doc """
+  Delete a `User`.
+  """
+  @spec delete(String.t()) :: EasyPost.Operation.t()
+  def delete(id) do
+    %EasyPost.Operation{method: :delete, path: "/users/#{id}"}
+  end
+
+  @doc """
   Retrieve a `User`.
   """
   @spec get(String.t()) :: EasyPost.Operation.t()
