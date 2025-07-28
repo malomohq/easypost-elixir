@@ -3,8 +3,8 @@ defmodule EasyPost.MixProject do
 
   def project do
     [
-      app: :ex_easypost,
-      version: "3.0.4",
+      app: :easypost_elixir,
+      version: "3.1.0",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -21,17 +21,15 @@ defmodule EasyPost.MixProject do
 
   defp deps do
     [
-      { :hackney, "~> 1.15", optional: true },
-
-      { :jason, "~> 1.2", optional: true },
+      {:hackney, "~> 1.15", optional: true},
+      {:jason, "~> 1.2", optional: true},
 
       #
       # dev
       #
 
-      { :dialyxir, "~> 1.0", only: :dev, runtime: false },
-
-      { :ex_doc, ">= 0.0.0", only: :dev, runtime: false }
+      {:dialyxir, "~> 1.0", only: :dev, runtime: false},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
 
@@ -45,10 +43,10 @@ defmodule EasyPost.MixProject do
   defp package do
     [
       description: "Elixir client for the EasyPost API",
-      maintainers: ["Anthony Smith"],
+      maintainers: ["Jason Cartwright"],
       licenses: ["MIT"],
       links: %{
-        GitHub: "https://github.com/sticksnleaves/ex_easypost"
+        GitHub: "https://github.com/malomohq/easypost-elixir"
       }
     ]
   end

@@ -20,7 +20,7 @@ erl_crash.dump
 *.ez
 
 # Ignore package tarball (built via "mix hex.build").
-ex_easypost-*.tar
+easypost-*.tar
 
 # Ignore macOS directory config.
 .DS_Store

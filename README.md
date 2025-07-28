@@ -2,18 +2,18 @@
 
 ## Installation
 
-`ex_easypost` is publbished on [Hex](https://hex.pm/packages/ex_easypost). Add
+`easypost-elixir` is publbished on [Hex](https://hex.pm/packages/easypost_elixir). Add
 it to your list of dependencies in `mix.exs`:
 
 ```elixir
 defp deps do
   [
-    { :ex_easypost, "~> 3.0" }
+    { :easypost-elixir, "~> 3.0" }
   ]
 end
 ```
 
-`ex_easypost` requires you to provide an HTTP client and a JSON codec. `hackney`
+`easypost-elixir` requires you to provide an HTTP client and a JSON codec. `hackney`
 and `jason` are used by default. If you wish to use these defaults you will need
 add `hackney` and `jason` as dependencies as well.
 
