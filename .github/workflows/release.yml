@@ -1,0 +1,90 @@
+---
+name: release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Bump version and update changelog
+        id: release
+        uses: google-github-actions/release-please-action@v3
+        with:
+          token: '${{ secrets.RELEASE_PLEASE_TOKEN }}'
+          release-type: elixir
+          package-name: easypost_elixir
+          extra-files: |
+            README.md
+
+      - name: Checkout Repository
+        if: ${{ steps.release.outputs.release_created }}
+        uses: actions/checkout@v3
+
+      - name: Install Runtime Dependencies using ASDF
+        if: ${{ steps.release.outputs.release_created }}
+        uses: asdf-vm/actions/install@v2
+
+      - name: Install Rebar
+        if: ${{ steps.release.outputs.release_created }}
+        run: mix local.rebar --force
+
+      - name: Install Hex
+        if: ${{ steps.release.outputs.release_created }}
+        run: mix local.hex --force
+
+      - name: Install Dependencies
+        if: ${{ steps.release.outputs.release_created }}
+        run: mix deps.get
+
+      - name: Publish Hex Package
+        if: ${{ steps.release.outputs.release_created }}
+        run: |
+          mix hex.publish package --yes
+        env:
+          HEX_API_KEY: '${{ secrets.HEX_API_KEY }}'
+
+      - name: Post to a Slack channel
+        if: ${{ steps.release.outputs.release_created }}
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          payload: |
+            {
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "EasyPost Elixir | Hex Package Released | ${{ steps.release.outputs.tag_name }}",
+                    "emoji": true
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "Release details: ${{ steps.release.outputs.html_url }}"
+                  }
+                },
+                {
+                  "type": "context",
+                  "elements": [
+                    {
+                      "type": "plain_text",
+                      "text": "Released By: @${{github.actor}}",
+                      "emoji": true
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
